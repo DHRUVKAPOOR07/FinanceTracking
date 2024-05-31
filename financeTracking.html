@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Tracking</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1em 0;
+    text-align: center;
+}
+
+main {
+    margin: 20px;
+}
+
+section {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+h2 {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 10px 0 5px;
+}
+
+input, textarea, select, button {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+</style>
+<body>
+    <header>
+        <h1>Finance Tracking System</h1>
+    </header>
+    <main>
+        
+        <section id="add-account">
+            <h2>Add Account</h2>
+            <form action="/add-account" method="post">
+                <label for="account-user-id">User ID:</label>
+                <input type="number" id="account-user-id" name="user_id" required>
+                <label for="account-name">Account Name:</label>
+                <input type="text" id="account-name" name="account_name" required>
+                <label for="account-type">Account Type:</label>
+                <select id="account-type" name="account_type" required>
+                    <option value="Checking">Checking</option>
+                    <option value="Savings">Savings</option>
+                    <option value="Credit Card">Credit Card</option>
+                    <option value="Investment">Investment</option>
+                </select>
+                <label for="account-balance">Balance:</label>
+                <input type="number" id="account-balance" name="balance" step="0.01" required>
+                <button type="submit">Add Account</button>
+            </form>
+        </section>
+        
+        <section id="add-category">
+            <h2>Add Category</h2>
+            <form action="/add-category" method="post">
+                <label for="category-user-id">User ID:</label>
+                <input type="number" id="category-user-id" name="user_id" required>
+                <label for="category-name">Category Name:</label>
+                <input type="text" id="category-name" name="category_name" required>
+                <label for="category-type">Category Type:</label>
+                <select id="category-type" name="category_type" required>
+                    <option value="Expense">Expense</option>
+                    <option value="Income">Income</option>
+                </select>
+                <button type="submit">Add Category</button>
+            </form>
+        </section>
+        
+        <section id="add-transaction">
+            <h2>Add Transaction</h2>
+            <form action="/add-transaction" method="post">
+                <label for="transaction-user-id">User ID:</label>
+                <input type="number" id="transaction-user-id" name="user_id" required>
+                <label for="transaction-account-id">Account ID:</label>
+                <input type="number" id="transaction-account-id" name="account_id" required>
+                <label for="transaction-category-id">Category ID:</label>
+                <input type="number" id="transaction-category-id" name="category_id" required>
+                <label for="transaction-amount">Amount:</label>
+                <input type="number" id="transaction-amount" name="amount" step="0.01" required>
+                <label for="transaction-date">Date:</label>
+                <input type="date" id="transaction-date" name="transaction_date" required>
+                <label for="transaction-description">Description:</label>
+                <textarea id="transaction-description" name="description"></textarea>
+                <button type="submit">Add Transaction</button>
+            </form>
+        </section>
+        
+        <section id="add-budget">
+            <h2>Add Budget</h2>
+            <form action="/add-budget" method="post">
+                <label for="budget-user-id">User ID:</label>
+                <input type="number" id="budget-user-id" name="user_id" required>
+                <label for="budget-category-id">Category ID:</label>
+                <input type="number" id="budget-category-id" name="category_id" required>
+                <label for="budget-amount">Amount:</label>
+                <input type="number" id="budget-amount" name="amount" step="0.01" required>
+                <label for="budget-start-date">Start Date:</label>
+                <input type="date" id="budget-start-date" name="start_date" required>
+                <label for="budget-end-date">End Date:</label>
+                <input type="date" id="budget-end-date" name="end_date" required>
+                <button type="submit">Add Budget</button>
+            </form>
+        </section>
+        
+        <section id="add-goal">
+            <h2>Add Goal</h2>
+            <form action="/add-goal" method="post">
+                <label for="goal-user-id">User ID:</label>
+                <input type="number" id="goal-user-id" name="user_id" required>
+                <label for="goal-name">Goal Name:</label>
+                <input type="text" id="goal-name" name="goal_name" required>
+                <label for="target-amount">Target Amount:</label>
+                <input type="number" id="target-amount" name="target_amount" step="0.01" required>
+                <label for="current-amount">Current Amount:</label>
+                <input type="number" id="current-amount" name="current_amount" step="0.01">
+                <label for="due-date">Due Date:</label>
+                <input type="date" id="due-date" name="due_date" required>
+                <button type="submit">Add Goal</button>
+            </form>
+        </section>
+        
+        <section id="add-notification">
+            <h2>Add Notification</h2>
+            <form action="/add-notification" method="post">
+                <label for="notification-user-id">User ID:</label>
+                <input type="number" id="notification-user-id" name="user_id" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                <label for="is-read">Is Read:</label>
+                <select id="is-read" name="is_read">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+                <button type="submit">Add Notification</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
